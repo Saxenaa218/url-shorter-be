@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { createShortURL } from "../controllers/createShortURL";
-import { deleteShortURL } from "../controllers/deleteShortURL";
-import { getAllShortURLs } from "../controllers/getAllShortURLs";
-import { getOriginalUrl } from "../controllers/getOriginalUrl";
+import { createShortURL } from "../controllers/createShortURL.js";
+import { deleteShortURL } from "../controllers/deleteShortURL.js";
+import { getAllShortURLs } from "../controllers/getAllShortURLs.js";
+import { getOriginalUrl } from "../controllers/getOriginalUrl.js";
 
 export const router = Router();
 
