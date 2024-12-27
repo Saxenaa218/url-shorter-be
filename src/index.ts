@@ -1,16 +1,29 @@
-import express from "express";
+import express, { Request, Response } from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import { router } from "./routes";
+import { dbConnection } from "./utils/dbConnection";
 
-const app = express();
-const port = process.env.PORT || 8080;
+dotenv.config();
+dbConnection();
 
-app.get("/", (req: any, res: any) => {
-  return res.send("Express Typescript on Vercel");
+export const app = express();
+const PORT = process.env.PORT;
+
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL,
+  })
+);
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+// use to make express
+app.use("/api/", router);
+
+app.get("/", (req: Request, res: Response) => {
+  res.send("Hello World!");
 });
 
-app.get("/ping", (req: any, res: any) => {
-  return res.send("pong 🏓");
-});
-
-app.listen(port, () => {
-  return console.log(`Server is listening on ${port}`);
+app.listen(PORT || 3005, () => {
+  console.log(`Server is running on ${PORT}`);
 });

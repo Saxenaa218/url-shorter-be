@@ -7,7 +7,7 @@
     "build": "rimraf dist && tsc",
     "ts.check": "tsc --project tsconfig.json",
     "add-build": "git add dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "preview": "yarn build && nodemon dist/src/index.js"
   },
   "pre-commit": [
     "ts.check",
@@ -19,6 +19,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/node": "^22.10.2",
     "nodemon": "^3.1.9",
@@ -28,6 +29,10 @@
     "typescript": "^5.7.2"
   },
   "dependencies": {
-    "express": "^4.21.2"
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.2",
+    "nanoid": "^5.0.9"
   }
 }
