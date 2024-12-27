@@ -1,8 +1,11 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import { router } from "./routes";
 import { dbConnection } from "./utils/dbConnection";
+import { getAllShortURLs } from "./controllers/getAllShortURLs";
+import { getOriginalUrl } from "./controllers/getOriginalUrl";
+import { createShortURL } from "./controllers/createShortURL";
+import { deleteShortURL } from "./controllers/deleteShortURL";
 
 dotenv.config();
 dbConnection();
@@ -18,7 +21,14 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // use to make express
-app.use("/api/", router);
+
+const router = express.Router();
+router.use("/api", router);
+
+router.get("/allUrls", getAllShortURLs);
+router.get("/url/:shortUrlId", getOriginalUrl);
+router.post("/url", createShortURL);
+router.delete("/url", deleteShortURL);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello World!");
