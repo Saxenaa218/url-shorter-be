@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index.ts",
+    "start": "nodemon --watch src --exec node --loader ts-node/esm src/index.ts",
+    "preview": "yarn build && node --loader ts-node/esm dist/src/index.js",
     "build": "rimraf dist && tsc",
     "ts.check": "tsc --project tsconfig.json",
-    "add-build": "git add dist",
-    "preview": "yarn build && nodemon dist/src/index.js"
+    "add-build": "git add dist"
   },
   "pre-commit": [
     "ts.check",
@@ -34,5 +34,6 @@
     "express": "^4.21.2",
     "mongoose": "^8.9.2",
     "nanoid": "^5.0.9"
-  }
+  },
+  "type": "module"
 }

@@ -1,4 +1,3 @@
-"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -8,12 +7,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAllShortURLs = void 0;
-const schema_1 = require("../schema");
-const getAllShortURLs = (req, resp) => __awaiter(void 0, void 0, void 0, function* () {
+import { UrlModel } from "../schema";
+export const getAllShortURLs = (req, resp) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const allShortUrls = yield schema_1.UrlModel.find({}, {
+        const allShortUrls = yield UrlModel.find({}, {
             originalURL: 1,
             shortUrlId: 1,
             createdAt: 1,
@@ -25,5 +22,4 @@ const getAllShortURLs = (req, resp) => __awaiter(void 0, void 0, void 0, functio
         resp.status(500).send({ message: "Unable to fetch all URLs" });
     }
 });
-exports.getAllShortURLs = getAllShortURLs;
 //# sourceMappingURL=getAllShortURLs.js.map

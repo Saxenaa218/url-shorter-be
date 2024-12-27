@@ -1,8 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.UrlModel = void 0;
-const mongoose_1 = require("mongoose");
-const urlSchema = new mongoose_1.Schema({
+import { model, Schema } from "mongoose";
+const urlSchema = new Schema({
     originalURL: {
         type: String,
         required: true,
@@ -16,5 +13,5 @@ const urlSchema = new mongoose_1.Schema({
         required: true,
     },
 });
-exports.UrlModel = (0, mongoose_1.model)("urls", urlSchema);
+export const UrlModel = model("urls", urlSchema);
 //# sourceMappingURL=index.js.map
